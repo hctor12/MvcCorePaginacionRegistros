@@ -52,6 +52,19 @@ as
 	where OFICIO=@oficio ) QUERY
 	where (QUERY.POSICION >= @posicion and QUERY.POSICION < (@posicion + 3))
 go
+
+create procedure SP_REGISTRO_DEPARTAMENTOS
+(@posicion int, @iddep int, @registros int OUT)
+as
+	select @registros = count(EMP_NO) from EMP
+	where DEPT_NO = @iddep
+	select EMP_NO, APELLIDO, OFICIO, SALARIO, DEPT_NO from
+	(select cast(row_number() over (order by APELLIDO) as int)
+	POSICION, EMP_NO, APELLIDO, OFICIO, SALARIO, DEPT_NO
+	from EMP
+	where DEPT_NO = @iddep) QUERY
+	where (QUERY.POSICION >= @posicion and QUERY.POSICION < (@posicion + 1))
+go
  */
 
 #endregion
