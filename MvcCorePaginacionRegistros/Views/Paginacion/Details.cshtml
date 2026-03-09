@@ -1,0 +1,66 @@
+﻿@model MvcCorePaginacionRegistros.Models.Departamento
+
+@{
+    Empleado emp = (Empleado)ViewData["EMPLEADO"];
+}
+
+<h1 class="mb-2">Empleados Registro Departamento</h1>
+
+<ul class="list-group">
+    <li class="list-group-item list-group-item-danger">
+        Id Departamento: @Model.IdDepartamento
+    </li>
+    <li class="list-group-item list-group-item-info">
+        Nombre: @Model.Nombre
+    </li>
+    <li class="list-group-item list-group-item-info">
+        Localidad: @Model.Localidad
+    </li>
+</ul>
+
+<h3 style="color:blue" class="my-2">
+    Registro @ViewData["POSICION"] de @ViewData["ULTIMO"]
+</h3>
+
+<div>
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">
+            <a asp-controller="Paginacion" asp-action="Details" asp-route-iddep="@Model.IdDepartamento" asp-route-posicion="1">
+                Primero
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a asp-controller="Paginacion" asp-action="Details" asp-route-iddep="@Model.IdDepartamento" asp-route-posicion="@ViewData["ANTERIOR"]">
+                Anterior
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a asp-controller="Paginacion" asp-action="Details" asp-route-iddep="@Model.IdDepartamento" asp-route-posicion="@ViewData["SIGUIENTE"]">
+                Siguiente
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a asp-controller="Paginacion" asp-action="Details" asp-route-iddep="@Model.IdDepartamento" asp-route-posicion="@ViewData["ULTIMO"]">
+                Último
+            </a>
+        </li>
+    </ul>
+</div>
+
+<ul class="list-group">
+    <li class="list-group-item list-group-item-info">
+        Id Empleado: @emp.IdEmpleado
+    </li>
+    <li class="list-group-item list-group-item-info">
+        Apellido: @emp.Apellido
+    </li>
+    <li class="list-group-item list-group-item-info">
+        Oficio: @emp.Oficio
+    </li>
+    <li class="list-group-item list-group-item-info">
+        Salario: @emp.Salario
+    </li>
+    <li class="list-group-item list-group-item-info">
+        Departamento: @emp.IdDepartamento
+    </li>
+</ul>

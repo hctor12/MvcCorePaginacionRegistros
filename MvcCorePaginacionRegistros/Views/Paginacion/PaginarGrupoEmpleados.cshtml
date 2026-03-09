@@ -1,0 +1,42 @@
+﻿@model List<Empleado>
+
+@{
+    int numRegistros = (int)@ViewData["REGISTROS"];
+    int numPagina = 1;
+}
+
+<h1 class="text-success">Paginación en grupo</h1>
+
+<hr />
+<div>
+    @for (int i = 1; i <= numRegistros; i += 3)
+    {
+        <a asp-controller="Paginacion" asp-action="PaginarGrupoEmpleados" asp-route-posicion="@i" class="btn btn-success">Página @numPagina </a>
+        ;
+        numPagina++;
+    }
+</div>
+<hr />
+
+<table class="table table-success">
+    <thead>
+        <tr>
+            <th>EMP_NO</th>
+            <th>APELLIDO</th>
+            <th>OFICIO</th>
+            <th>SALARIO</th>
+            <th>DEPT_NO</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Empleado emp in Model)
+        {
+            <tr>
+                <td>@emp.IdEmpleado</td>
+                <td>@emp.Apellido</td>
+                <td>@emp.Oficio</td>
+                <td>@emp.Salario</td>
+                <td>@emp.IdDepartamento</td>
+            </tr>
+        }
+</table>

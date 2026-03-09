@@ -11,7 +11,7 @@
 <div>
     @for (int i = 1; i <= numRegistros; i += 2)
     {
-        <a asp-controller="Paginacion" asp-action="GrupoVistaDepartamentos" asp-route-posicion="@i">Página @numPagina </a>
+        <a asp-controller="Paginacion" asp-action="GrupoVistaDepartamentos" asp-route-posicion="@i" class="btn btn-info">Página @numPagina </a>
         ;
         numPagina++;
     }
